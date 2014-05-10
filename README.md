@@ -1,6 +1,9 @@
 This is my first README
 =======================
 
+I want to add random sounds from characters on click.
+
+
 Mid Or I feed now works but has a few issues.
 Currently the coridinits for the mouse position are hard coded.
 I need to make this dynamic.

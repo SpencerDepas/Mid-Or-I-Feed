@@ -1,19 +1,20 @@
+from Tkinter import *
 import win32api
 import win32con
 import time
 from numpy import *
 import win32com.client
 
-
+master = Tk()
 shell = win32com.client.Dispatch("WScript.Shell")
 x_pad = 75
 y_pad = 23
 
 
-class Cord:
-    accept_match = 482, 406
-    text_feild = 267, 665
-    play_button = 589, 39
+e = Entry(master)
+e.pack()
+
+e.focus_set()
 
 
 def leftClick():
@@ -33,25 +34,26 @@ def playGame():
     return
 
 
-def midOrIfeed():
+def midOrIfeed(str):
     mousePos((300, 663))
     leftClick()
     #time.sleep(.1)
     #shell.SendKeys("Mid Or I Feed")
-    shell.SendKeys("Mid Please")
+    shell.SendKeys(str)
     shell.SendKeys("{ENTER}")
     time.sleep(3)
     return
 
 
-playGame()
-currentTime = time.time()
-while(currentTime + 8 > time.time()):
-    midOrIfeed()
+def callback():
+    position = e.get()
+    playGame()
+    currentTime = time.time()
+    while(currentTime + 8 > time.time()):
+        midOrIfeed(position)
 
 
+b = Button(master, text="Position", width=10, command=callback)
+b.pack()
 
-
-
-
-
+mainloop()
